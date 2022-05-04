@@ -17,7 +17,7 @@ void setup()
   size(1024, 1024,P3D);
   
    minim = new Minim(this);
-   ap = minim.loadFile("Gorgon City - All Four Walls ft. Vaults.mp3", 1024);
+   ap = minim.loadFile("WIGGLECORE.mp3", 1024);
    ap.play();
    ab = ap.mix;
    halfH = height/2;
@@ -97,18 +97,24 @@ void draw()
     rect(250,250,560,5);
     rect(250,230,550,4);
     
-    fill(0,0,0);
+//    fill(0,0,0);
+    fill(190,200,200*lerpedAverage);
     rect (400,512,30,-80);
     rect (300,512,30,-120);
     rect (500,512,30,-130);
     rect (550,512,30,-150);
     rect (450,512,35,-50);
-    fill(190,200,200*lerpedAverage);
+    rect (600,512,30,-100);
+    rect (650,512,30,-70);
+    rect (725,512,30,-120);
+    rect (770,512,30,-30);
+    rect (250,512,30,-30);
+ //   fill(190,200,200*lerpedAverage);
      rect(0,height/2,1024,1024);
      
-      fill(r % 256,255,255);
-    stroke(30,255,255);
-   translate(width * .25, height/ 2, 0);
+      stroke(r % 256,255,255);
+    fill(0,0,0);
+   translate(width * .25, height/ 2, 100);
   rotateX(theta);  // TWO_PI,PI, QUARTER_PI
   rotateY(theta);  // TWO_PI,PI, QUARTER_PI
   rotateZ(theta);  // TWO_PI,PI, QUARTER_PI
@@ -116,7 +122,7 @@ void draw()
  box(size);
   popMatrix();
   
-  translate(width * .75, height/2, 0);
+  translate(width * .75, height/2, 100);
   rotateX(theta);  // TWO_PI,PI, QUARTER_PI
   rotateY(theta);  // TWO_PI,PI, QUARTER_PI
   rotateZ(theta);  // TWO_PI,PI, QUARTER_PI
