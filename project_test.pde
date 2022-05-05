@@ -5,13 +5,6 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-// Get average amplitude of buffer
-// Calculate lerpedAmplitude
-// Draw a circle
-// Make an array of type float the same size as the buffer
-// Lerp each element of the array to the corresponding element in the buffer
-// Use the lerped values from the array to do the visualisation instead of using the buffer
-
 void setup()
 {
   size(1024, 1024,P3D);
@@ -21,8 +14,7 @@ void setup()
    ap.play();
    ab = ap.mix;
    halfH = height/2;
-   cx= width/2;
-  cy= height/2;
+  
    colorInc= 255/(float)ab.size();
    colorMode(HSB);
    
@@ -33,8 +25,7 @@ Minim minim;
 AudioPlayer ap;
 AudioInput ai;
 AudioBuffer ab;
-float  x,y;
-float cx, cy;
+
 float r =1;
 float halfH;
 float lerpedAverage = 0;
@@ -47,15 +38,13 @@ void draw()
   background(190,200,100);
   fill(0,200,150);
   noStroke();
- // ellipse(width/2,500,2500,500);
-  
-  x=cx+sin(theta) * r;
-  y=cy+cos(theta) * r;
- // rect 20;
+
   theta += 0.05f;
   r+=1;
   float sum = 0;
+
  
+ //Main visualizer
   for(int i = 0;i<ab.size();i++)
   {
     
@@ -68,7 +57,6 @@ void draw()
   //  triangle(i, halfH-lerpedBuffer[i]*halfH * 1.0f+i/1500, halfH+lerpedBuffer[i]*halfH * 1.0f-1500, i,i,i);
     fill(190, 180, 200);
     noStroke();
- // rect(0,0,1024,250);
  
    
   }
@@ -78,6 +66,8 @@ void draw()
   strokeWeight(5);
    stroke(20,255,255);
  
+ 
+ //aesthetics background
   fill (190,200,150);
   circle(width/2, height/2, 1200+lerpedAverage * 50);
   fill (190,200,175);
@@ -88,7 +78,7 @@ void draw()
     noStroke();
     circle(width/2,height/2, 600);
     fill( 190,200,200);
-    
+    //sun lines
     rect(120,420,760,10);
     rect(140,370,720,9);
     rect(160,330,700,8);
@@ -97,7 +87,7 @@ void draw()
     rect(250,250,560,5);
     rect(250,230,550,4);
     
-//    fill(0,0,0);
+
     fill(190,200,200*lerpedAverage);
     rect (400,512,30,-80);
     rect (300,512,30,-120);
@@ -109,28 +99,26 @@ void draw()
     rect (725,512,30,-120);
     rect (770,512,30,-30);
     rect (250,512,30,-30);
- //   fill(190,200,200*lerpedAverage);
+
      rect(0,height/2,1024,1024);
+    
      
+     //cubes
       stroke(r % 256,255,255);
     fill(0,0,0);
    translate(width * .25, height/ 2, 100);
-  rotateX(theta);  // TWO_PI,PI, QUARTER_PI
-  rotateY(theta);  // TWO_PI,PI, QUARTER_PI
-  rotateZ(theta);  // TWO_PI,PI, QUARTER_PI
+  rotateX(theta);  
+  rotateY(theta);  
+  rotateZ(theta);  
  float size = map(average,0,1,100,200);
  box(size);
   popMatrix();
   
   translate(width * .75, height/2, 100);
-  rotateX(theta);  // TWO_PI,PI, QUARTER_PI
-  rotateY(theta);  // TWO_PI,PI, QUARTER_PI
-  rotateZ(theta);  // TWO_PI,PI, QUARTER_PI
+  rotateX(theta);  
+  rotateY(theta);  
+  rotateZ(theta);  
   box(size);
-//for(int i = 0 ; i < ab.size(); i++)
-  {
- // stroke (i * colorInc, 255, 255);
- // line(i-250,halfH,i-250,halfH + ab.get(i) *halfH);
 
-}
+
 }
